@@ -2,4 +2,4 @@
 
 ROOT = File.expand_path("..", __dir__)
 $: << File.join(ROOT, 'lib')
-require 'translator'
+require "#{ROOT}/app/main"

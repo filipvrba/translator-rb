@@ -1,12 +1,8 @@
 require 'json_parser'
 
-module Translator
+module Main
   module Config
     module_function
-
-    def init
-      puts "lol"
-    end
 
     @default = JsonParser.new File.join(ROOT, 'config/default.json')
     @default.on :destination, "cs"

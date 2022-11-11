@@ -1,19 +1,19 @@
-require 'translator/signals'
-require 'translator/config'
+require 'translator/constants'
+require 'translator/version'
+require 'translator/pid'
 
 module Translator
   module_function
-  DEST = Config::destination
-  SRC  = Config::source
-
   def get_sel_text
     %x(xsel)
   end
 
-  is_access = system("translate -d #{DEST} -s #{SRC} '#{get_sel_text()}'")
-  if is_access
-    gets
-  else
-    exit
+  def get_trans_text(dest, src, text)
+    system("translate -d #{dest} -s #{src} '#{text}'")
+  end
+
+  def open_new
+    path_fa = File.join(ROOT, 'bin', Constants::APP_NAME)
+    system("x-terminal-emulator -t 'Command Line' -e #{path_fa}")
   end
 end
