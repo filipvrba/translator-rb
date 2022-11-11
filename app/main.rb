@@ -15,8 +15,8 @@ module Main
 
   def self.operation
     is_translated = translate()
-    is_terminal = Translator::PID.running?
-    Input.exit_app(is_translated, is_terminal)
+    is_still_terminal = Translator::PID.running?
+    Input.exit_app(is_translated, is_still_terminal)
   end
 
   unless Arguments.options[:terminal]
